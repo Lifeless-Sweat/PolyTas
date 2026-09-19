@@ -14,7 +14,7 @@
  *   - the sim worker filename "simulation_worker.bundle.js"
  *   - the numeric messageType protocol + field shapes
  *   - the 227-byte CarState binary layout
- *   - the leaderboard host polytas.minceraft-player-2010.workers.dev + "/leaderboard"
+ *   - the leaderboard host ptproxy.cwcinc.dev + "/leaderboard"
  *
  * Phase 2 (bruteforce) adds tas/tas-sim.worker.js + tas/vendor/determinism.js.
  * Phase 3 (savestate) adds the replay-drive + upload taint wiring.
@@ -862,7 +862,7 @@
       if (String(method || "").toUpperCase() !== "POST") return false;
       var u = String(url || ""), host = "", path = u;
       try { var p = new URL(u, location.href); host = p.host; path = p.pathname; } catch (e) { host = u; path = u.split("?")[0]; }
-      if (host.indexOf("polytas.minceraft-player-2010.workers.dev") < 0) return false;       // only the kodub API
+      if (host.indexOf("ptproxy.cwcinc.dev") < 0) return false;       // only the kodub API
       if (/\/leaderboard$/.test(path)) return true;            // the known submit endpoint
       try { if (typeof body === "string" && /(^|&)recording=/.test(body)) return true; } catch (e) {} // submit body signature
       return false;
@@ -1018,7 +1018,7 @@
   gate.noteUrl = function (url) {
     try {
       var u = new URL(String(url || ""), location.href);
-      if (u.host.indexOf("polytas.minceraft-player-2010.workers.dev") >= 0 && /leaderboard/.test(u.pathname)) {
+      if (u.host.indexOf("ptproxy.cwcinc.dev") >= 0 && /leaderboard/.test(u.pathname)) {
         var t = u.searchParams.get("trackId");
         if (t && t !== TAS.currentTrackId) { TAS.currentTrackId = t; bus.emit("track", t); }
         var uh = u.searchParams.get("userTokenHash");

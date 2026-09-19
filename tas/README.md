@@ -279,7 +279,7 @@ build). It anchors only on **stable wire contracts**:
 - **Recording** codec (5 toggle channels → zlib → base64url) is byte-compatible
   with the game's, implemented with the browser-native `CompressionStream`
   (zero third-party code).
-- **Upload gate** drops the `POST` to `polytas.minceraft-player-2010.workers.dev/.../leaderboard` (and the
+- **Upload gate** drops the `POST` to `ptproxy.cwcinc.dev/.../leaderboard` (and the
   `fetch` equivalent) while `window.__TAS_tainted` is set, synthesising a clean
   empty response. Local saving happens before the network call, so PBs/ghosts
   are unaffected.

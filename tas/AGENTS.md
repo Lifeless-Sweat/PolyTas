@@ -73,7 +73,7 @@ always one of these:
 - **CarState binary layout** — 227-byte variable-length buffer; § 4.
 - **Recording codec** — 5 toggle channels → zlib → base64url; byte-compatible with
   the game's; § 5.
-- **Leaderboard endpoint** — host contains `polytas.minceraft-player-2010.workers.dev`, path ends `/leaderboard`
+- **Leaderboard endpoint** — host contains `ptproxy.cwcinc.dev`, path ends `/leaderboard`
   (`TAS.gate.isSubmitUrl`). This is the **official** board the gate blocks; the
   tool's own board (§ 13) is a separate Supabase host.
 
@@ -160,7 +160,7 @@ upload (§ 9); the native board (§ 13) still records driven runs.
 
 No-op unless `window.__TAS_tainted`. **XHR shim** drops a tainted `POST` matching
 `isSubmitUrl` and synthesizes a clean `200`/`"null"` (readystatechange+load+loadend);
-**fetch guard** mirrors it. Match = `POST` + host `polytas.minceraft-player-2010.workers.dev` + path ending
+**fetch guard** mirrors it. Match = `POST` + host `ptproxy.cwcinc.dev` + path ending
 `/leaderboard`. Local PB/ghost persist before the network call, so they're unaffected.
 
 ---
